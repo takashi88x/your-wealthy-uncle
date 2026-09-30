@@ -20,7 +20,8 @@ const PRODUCTS = {
   },
 };
 
-const RESET_LINK = "https://buy.stripe.com/aFa6oHfr1cVU2xs4W5es001";
+const RESET_LINK = "PASTE_YOUR_90_DAY_RESET_STRIPE_LINK_HERE";
+const TRACKER_LINK = "PASTE_YOUR_MONEY_TRACKER_STRIPE_LINK_HERE";
 
 export default function PurchaseClient() {
   const [state,setState] = useState({loading:true});

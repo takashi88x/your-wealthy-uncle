@@ -39,7 +39,7 @@ function CTA({ className = "" }) {
   return (
     <a className={`cta ${className}`} href={CHECKOUT_LINK}>
       GET THE FIRST $10K SYSTEM <span>— $9.99</span>
-      <small>ONE-TIME PAYMENT · INSTANT DIGITAL ACCESS</small>
+      <small>LAUNCH PRICE · ONE-TIME PAYMENT · INSTANT DIGITAL ACCESS</small>
     </a>
   );
 }
@@ -63,6 +63,7 @@ export default function Home() {
           <p className="eyebrow">YOUR WEALTHY UNCLE · THE FIRST $10K SYSTEM</p>
           <h1>Your paycheck isn't the problem.<br /><em>Your money system is.</em></h1>
           <p className="hero-lead">A simple 90-day system to help you stop living paycheck to paycheck, take control of your spending, and work toward your first $10,000.</p>
+          <div className="launch-offer"><span>LAUNCH PRICE</span><strong><s>$19.99</s> $9.99</strong><em>One-time payment. Price will increase after the launch period.</em></div>
           <CTA />
           <p className="microtrust"><span>✓</span> No subscription &nbsp;·&nbsp; <span>✓</span> Digital access &nbsp;·&nbsp; <span>✓</span> Beginner-friendly</p>
         </div>
@@ -89,6 +90,24 @@ export default function Home() {
           </div>
           <p className="statement">Then next month looks exactly the same.</p>
           <p className="body-copy">The problem isn't that you don't care about money. <strong>Most people were never given a simple system for managing it.</strong></p>
+        </div>
+      </section>
+
+      <section className="section urgency-section">
+        <div className="wrap urgency-grid">
+          <div>
+            <p className="eyebrow">DON'T WAIT FOR THE PERFECT MONTH</p>
+            <h2>Every month you stay disorganized is another month without a clear plan.</h2>
+          </div>
+          <div className="urgency-copy">
+            <p>Waiting until you “make more money” can keep the same cycle going. Start with the money you have, build the habit, and give every paycheck a job.</p>
+            <div className="urgency-points">
+              <span>✓ 90-day structure</span>
+              <span>✓ Practical money routines</span>
+              <span>✓ Clear $10K checkpoints</span>
+            </div>
+            <CTA />
+          </div>
         </div>
       </section>
 
@@ -147,6 +166,23 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="section proof-section">
+        <div className="wrap">
+          <div className="proof-head">
+            <div>
+              <p className="eyebrow">WHY THIS IS DIFFERENT</p>
+              <h2>Built to be used — not just read.</h2>
+            </div>
+            <p className="body-copy">You are not buying another motivational PDF. You are getting a structured system for organizing your money and tracking progress toward a specific goal.</p>
+          </div>
+          <div className="proof-grid">
+            <article><strong>01</strong><h3>Clear starting point</h3><p>Know what to look at first instead of trying to fix everything at once.</p></article>
+            <article><strong>02</strong><h3>Action over theory</h3><p>Simple routines and checkpoints designed to turn information into action.</p></article>
+            <article><strong>03</strong><h3>One measurable goal</h3><p>Work toward your first $10K with smaller milestones you can actually see.</p></article>
+          </div>
+        </div>
+      </section>
+
       <section className="section product-truth">
         <div className="wrap truth-grid">
           <div>
@@ -197,9 +233,17 @@ export default function Home() {
             <p className="eyebrow">YOUR FIRST $10K STARTS HERE</p>
             <h2>The First $10K System</h2>
             <p>A 90-day money reset designed to help you organize your spending, build better saving habits, manage debt, and work toward your first $10,000.</p>
-            <div className="price"><span>$</span>9<span className="cents">99</span></div>
+            <div className="offer-badge">LAUNCH PRICING</div>
+            <div className="price-row"><span className="regular-price">$19.99</span><div className="price"><span>$</span>9<span className="cents">99</span></div></div>
+            <p className="price-note">Save $10 today · launch price won't last</p>
             <p className="one-time">ONE-TIME PAYMENT · NO SUBSCRIPTION</p>
             <CTA />
+            <div className="offer-value">
+              <span>✓ 90-day money reset</span>
+              <span>✓ Spending & savings system</span>
+              <span>✓ Debt organization framework</span>
+              <span>✓ First $10K roadmap</span>
+            </div>
           </div>
           <div className="offer-visual">
             <div className="mini-cover">
@@ -208,6 +252,19 @@ export default function Home() {
               <small>A 90-DAY MONEY RESET</small>
             </div>
             <div className="access-note"><b>After checkout</b><span>Get instant access to your digital files and start your reset.</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section trust-section">
+        <div className="wrap trust-grid-new">
+          <div>
+            <p className="eyebrow">BUILT FOR REAL LIFE</p>
+            <h2>No fake success stories. Just a system you can use.</h2>
+          </div>
+          <div>
+            <p className="body-copy">We are keeping the page honest while the product is in its launch phase: no invented customer reviews, no fake income screenshots, and no promises of guaranteed results.</p>
+            <p className="trust-strong">What you can expect: a clear framework, practical tools, and immediate digital access.</p>
           </div>
         </div>
       </section>
@@ -231,7 +288,7 @@ export default function Home() {
         <div className="wrap final-card">
           <p className="eyebrow">YOUR WEALTHY UNCLE</p>
           <h2>You don't need a perfect financial life.<br /><em>You need a system you can actually follow.</em></h2>
-          <p>Start building your first $10K.</p>
+          <p>Launch pricing: <s>$19.99</s> → <strong>$9.99</strong>.</p>
           <CTA />
           <small className="final-disclaimer">Digital product. Educational and organizational content only. Not personalized financial, investment, tax or legal advice.</small>
         </div>
@@ -242,7 +299,7 @@ export default function Home() {
         <p>© 2026 Your Wealthy Uncle. All rights reserved.</p>
       </footer>
 
-      <a className="mobile-sticky" href={CHECKOUT_LINK}>GET THE FIRST $10K SYSTEM — $9.99</a>
+      <a className="mobile-sticky" href={CHECKOUT_LINK}>GET THE FIRST $10K SYSTEM — $9.99 · LAUNCH PRICE</a>
     </main>
   );
 }
