@@ -1,4 +1,9 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
 const CHECKOUT_LINK = "https://buy.stripe.com/fZucN5gv5aNM7RM0FPes000";
+const LAUNCH_END = "2026-10-07T23:59:59-03:00";
 
 const steps = [
   {
@@ -30,10 +35,51 @@ const included = [
 const faqs = [
   ["Is this financial advice?", "No. The system focuses on budgeting, spending organization, saving habits and financial planning. It does not provide personalized investment, tax or legal advice."],
   ["Is this a physical product?", "No. The First $10K System is a digital product delivered online after purchase."],
-  ["How much does it cost?", "$9.99 one time. There is no subscription or recurring charge for the core system."],
+  ["How much does it cost?", "$9.99 during the launch period (regular price $19.99). One-time payment with no subscription or recurring charge for the core system."],
   ["How quickly can I start?", "Immediately after checkout. Your purchase is sent to the digital delivery page."],
   ["Do I need a finance background?", "No. It is designed to be straightforward and beginner-friendly."],
 ];
+
+function Countdown() {
+  const [timeLeft, setTimeLeft] = useState(null);
+
+  useEffect(() => {
+    const tick = () => {
+      const diff = new Date(LAUNCH_END).getTime() - Date.now();
+      if (diff <= 0) {
+        setTimeLeft({ expired: true });
+        return;
+      }
+      const totalSeconds = Math.floor(diff / 1000);
+      setTimeLeft({
+        days: Math.floor(totalSeconds / 86400),
+        hours: Math.floor((totalSeconds % 86400) / 3600),
+        minutes: Math.floor((totalSeconds % 3600) / 60),
+        seconds: totalSeconds % 60,
+        expired: false,
+      });
+    };
+    tick();
+    const interval = setInterval(tick, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  if (!timeLeft) return <div className="countdown-placeholder" aria-hidden="true" />;
+  if (timeLeft.expired) return <div className="countdown expired">LAUNCH PRICE ENDED · REGULAR PRICE $19.99</div>;
+
+  const pad = (n) => String(n).padStart(2, "0");
+  return (
+    <div className="countdown" aria-label="Launch price countdown">
+      <span><b>{pad(timeLeft.days)}</b><small>DAYS</small></span>
+      <i>:</i>
+      <span><b>{pad(timeLeft.hours)}</b><small>HRS</small></span>
+      <i>:</i>
+      <span><b>{pad(timeLeft.minutes)}</b><small>MIN</small></span>
+      <i>:</i>
+      <span><b>{pad(timeLeft.seconds)}</b><small>SEC</small></span>
+    </div>
+  );
+}
 
 function CTA({ className = "" }) {
   return (
@@ -47,6 +93,14 @@ function CTA({ className = "" }) {
 export default function Home() {
   return (
     <main className="lp">
+      <div className="promo-bar">
+        <div className="promo-inner wrap">
+          <span className="promo-label">LAUNCH PRICE</span>
+          <span className="promo-copy"><s>$19.99</s> <strong>$9.99</strong> · ENDS OCTOBER 7</span>
+          <Countdown />
+          <a href={CHECKOUT_LINK}>LOCK IN $9.99 →</a>
+        </div>
+      </div>
       <header className="nav wrap">
         <a href="#top" className="brand-lockup">
           <span className="brand-mark">YWU</span>
@@ -63,7 +117,7 @@ export default function Home() {
           <p className="eyebrow">YOUR WEALTHY UNCLE · THE FIRST $10K SYSTEM</p>
           <h1>Your paycheck isn't the problem.<br /><em>Your money system is.</em></h1>
           <p className="hero-lead">A simple 90-day system to help you stop living paycheck to paycheck, take control of your spending, and work toward your first $10,000.</p>
-          <div className="launch-offer"><span>LAUNCH PRICE</span><strong><s>$19.99</s> $9.99</strong><em>One-time payment. Price will increase after the launch period.</em></div>
+          <div className="launch-offer"><span>LIMITED LAUNCH PRICE</span><strong><s>$19.99</s> $9.99</strong><em>Save $10 · regular price returns October 8.</em><Countdown /></div>
           <CTA />
           <p className="microtrust"><span>✓</span> No subscription &nbsp;·&nbsp; <span>✓</span> Digital access &nbsp;·&nbsp; <span>✓</span> Beginner-friendly</p>
         </div>
